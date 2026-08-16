@@ -1,4 +1,4 @@
-const CACHE_NAME = "emotion-map-v2";
+const CACHE_NAME = "emotion-map-v3";
 
 const CORE_ASSETS = [
   "./",
@@ -7,10 +7,10 @@ const CORE_ASSETS = [
   "./app.js",
   "./manifest.webmanifest",
   "./assets/app-icon.svg",
-  "./assets/icon-192-v2.png",
-  "./assets/icon-512-v2.png",
-  "./assets/icon-maskable-512-v2.png",
-  "./assets/apple-touch-icon-v2.png"
+  "./assets/icon-192-v3.png",
+  "./assets/icon-512-v3.png",
+  "./assets/icon-maskable-512-v3.png",
+  "./assets/apple-touch-icon-v3.png"
 ];
 
 const CHARACTER_ASSETS = Array.from(
