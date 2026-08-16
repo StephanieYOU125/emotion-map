@@ -42,7 +42,13 @@ const characterDialog = document.querySelector("#character-dialog");
 const dialogImage = document.querySelector("#dialog-character-image");
 const dialogTitle = document.querySelector("#dialog-title");
 const closeCharacterDialog = document.querySelector("#close-character-dialog");
+const draftStatus = document.querySelector("#draft-status");
+const installButton = document.querySelector("#install-app");
+const installDialog = document.querySelector("#install-dialog");
+const installInstructions = document.querySelector("#install-instructions");
+const closeInstallDialog = document.querySelector("#close-install-dialog");
 const NS = "http://www.w3.org/2000/svg";
+const DRAFT_KEY = "emotion-map-card-v1";
 const plot = { left: 72, top: 58, right: 770, bottom: 700 };
 
 const x = value => plot.left + ((value + 5) / 10) * (plot.right - plot.left);
@@ -132,7 +138,48 @@ function selectEmotion(emotion, dot) {
 search.addEventListener("input", render);
 groupFilter.addEventListener("change", render);
 reset.addEventListener("click", () => { search.value=""; groupFilter.value="all"; render(); search.focus(); });
-clearCard.addEventListener("click", () => emotionCard.reset());
+
+function saveDraft() {
+  const draft = Object.fromEntries(new FormData(emotionCard).entries());
+  const hasContent = Object.values(draft).some(value => String(value).trim());
+  try {
+    if (hasContent) {
+      localStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
+      draftStatus.textContent = "已自動保存在這台裝置";
+    } else {
+      localStorage.removeItem(DRAFT_KEY);
+      draftStatus.textContent = "尚未填寫";
+    }
+  } catch {
+    draftStatus.textContent = "瀏覽器目前無法儲存內容";
+  }
+}
+
+function restoreDraft() {
+  try {
+    const draft = JSON.parse(localStorage.getItem(DRAFT_KEY));
+    if (!draft) return;
+    Object.entries(draft).forEach(([name, value]) => {
+      const field = emotionCard.elements.namedItem(name);
+      if (field) field.value = value;
+    });
+    draftStatus.textContent = "已載入這台裝置上的內容";
+  } catch {
+    localStorage.removeItem(DRAFT_KEY);
+  }
+}
+
+let saveTimer;
+emotionCard.addEventListener("input", () => {
+  draftStatus.textContent = "儲存中…";
+  window.clearTimeout(saveTimer);
+  saveTimer = window.setTimeout(saveDraft, 250);
+});
+clearCard.addEventListener("click", () => {
+  emotionCard.reset();
+  try { localStorage.removeItem(DRAFT_KEY); } catch { /* Storage may be unavailable in private mode. */ }
+  draftStatus.textContent = "已清除這台裝置上的內容";
+});
 document.querySelectorAll(".character-art").forEach(button => {
   button.addEventListener("click", () => {
     dialogImage.src = button.dataset.full;
@@ -146,6 +193,43 @@ characterDialog.addEventListener("click", event => {
   if (event.target === characterDialog) characterDialog.close();
 });
 
+let deferredInstallPrompt;
+const isStandalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+if (!isStandalone) installButton.hidden = false;
+
+window.addEventListener("beforeinstallprompt", event => {
+  event.preventDefault();
+  deferredInstallPrompt = event;
+  installButton.hidden = false;
+});
+
+installButton.addEventListener("click", async () => {
+  if (deferredInstallPrompt) {
+    deferredInstallPrompt.prompt();
+    await deferredInstallPrompt.userChoice;
+    deferredInstallPrompt = null;
+    return;
+  }
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  if (!isIOS) {
+    installInstructions.querySelector("p:last-of-type").textContent = "如果瀏覽器沒有顯示安裝按鈕，請使用 Chrome 或 Edge，並從選單選擇「安裝應用程式」。";
+  }
+  installDialog.showModal();
+});
+closeInstallDialog.addEventListener("click", () => installDialog.close());
+installDialog.addEventListener("click", event => {
+  if (event.target === installDialog) installDialog.close();
+});
+window.addEventListener("appinstalled", () => {
+  installButton.hidden = true;
+  deferredInstallPrompt = null;
+});
+
+if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js"));
+}
+
 drawFrame();
 populateControls();
+restoreDraft();
 render();
