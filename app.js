@@ -38,6 +38,10 @@ const detail = document.querySelector("#emotion-detail");
 const groupCards = document.querySelector("#group-cards");
 const emotionCard = document.querySelector("#emotion-card");
 const clearCard = document.querySelector("#clear-card");
+const characterDialog = document.querySelector("#character-dialog");
+const dialogImage = document.querySelector("#dialog-character-image");
+const dialogTitle = document.querySelector("#dialog-title");
+const closeCharacterDialog = document.querySelector("#close-character-dialog");
 const NS = "http://www.w3.org/2000/svg";
 const plot = { left: 72, top: 58, right: 770, bottom: 700 };
 
@@ -129,6 +133,18 @@ search.addEventListener("input", render);
 groupFilter.addEventListener("change", render);
 reset.addEventListener("click", () => { search.value=""; groupFilter.value="all"; render(); search.focus(); });
 clearCard.addEventListener("click", () => emotionCard.reset());
+document.querySelectorAll(".character-art").forEach(button => {
+  button.addEventListener("click", () => {
+    dialogImage.src = button.dataset.full;
+    dialogImage.alt = button.querySelector("img").alt;
+    dialogTitle.textContent = button.dataset.title;
+    characterDialog.showModal();
+  });
+});
+closeCharacterDialog.addEventListener("click", () => characterDialog.close());
+characterDialog.addEventListener("click", event => {
+  if (event.target === characterDialog) characterDialog.close();
+});
 
 drawFrame();
 populateControls();
