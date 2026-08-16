@@ -1,0 +1,23 @@
+{
+  "name": "情緒地圖 Emotion Map",
+  "short_name": "情緒地圖",
+  "description": "辨識、理解並陪伴自己的 72 種情緒。",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f8f4ec",
+  "theme_color": "#f8f4ec",
+  "lang": "zh-Hant",
+  "orientation": "any",
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "情緒象限", "short_name": "象限", "url": "./#map" },
+    { "name": "情緒操作卡", "short_name": "操作卡", "url": "./#practice" },
+    { "name": "角色圖鑑", "short_name": "圖鑑", "url": "./#characters" }
+  ]
+}
