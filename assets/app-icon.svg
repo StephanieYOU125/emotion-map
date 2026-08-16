@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="情緒地圖 App 圖示">
+  <defs>
+    <radialGradient id="paper" cx="35%" cy="25%" r="85%">
+      <stop offset="0" stop-color="#fffaf1"/>
+      <stop offset="1" stop-color="#e9dfcf"/>
+    </radialGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#473e32" flood-opacity=".22"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="116" fill="url(#paper)"/>
+  <circle cx="256" cy="256" r="148" fill="#2c2b28" filter="url(#shadow)"/>
+  <circle cx="256" cy="256" r="58" fill="#d77a68"/>
+  <circle cx="256" cy="256" r="30" fill="#f8f4ec" opacity=".9"/>
+  <circle cx="256" cy="128" r="28" fill="#d3a64b"/>
+  <circle cx="367" cy="192" r="28" fill="#7199a8"/>
+  <circle cx="367" cy="320" r="28" fill="#8a789f"/>
+  <circle cx="256" cy="384" r="28" fill="#7f9a77"/>
+  <circle cx="145" cy="320" r="28" fill="#b87869"/>
+  <circle cx="145" cy="192" r="28" fill="#70a59a"/>
+</svg>
