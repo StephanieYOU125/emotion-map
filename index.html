@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="以愉快度與身體能量整理 72 種情緒的互動象限圖。">
+  <meta name="theme-color" content="#f8f4ec">
+  <title>情緒地圖 Emotion Map</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="回到情緒地圖頂端">
+      <span class="brand-mark" aria-hidden="true">●</span>
+      <span>情緒地圖</span>
+      <small>Emotion Map</small>
+    </a>
+    <nav aria-label="頁面導覽">
+      <a href="#map">象限圖</a>
+      <a href="#guide">如何閱讀</a>
+      <a href="#groups">12 組分類</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="eyebrow">72 種內在經驗・12 組情緒分類</div>
+      <h1>每一個情緒，<br><em>都在傳遞訊息。</em></h1>
+      <p>沿著「愉快程度」與「身體能量」兩條軸線，找到此刻的感受。情緒的位置不是標準答案，而是一張協助你靠近自己的地圖。</p>
+      <a class="primary-action" href="#map">開始探索 <span aria-hidden="true">↓</span></a>
+      <div class="hero-orbit" aria-hidden="true">
+        <span class="orb orb-love">愛</span>
+        <span class="orb orb-calm">平靜</span>
+        <span class="orb orb-fear">害怕</span>
+        <span class="orb orb-hope">希望</span>
+        <span class="orb orb-anger">憤怒</span>
+        <span class="orb orb-curious">好奇</span>
+      </div>
+    </section>
+
+    <section id="map" class="map-section" aria-labelledby="map-heading">
+      <div class="section-heading">
+        <div>
+          <span class="section-index">01</span>
+          <h2 id="map-heading">情緒象限</h2>
+        </div>
+        <p>選擇一個圓點，看看它大致位於哪種身心狀態。</p>
+      </div>
+
+      <div class="toolbar" aria-label="情緒篩選工具">
+        <label class="search-field">
+          <span aria-hidden="true">⌕</span>
+          <span class="sr-only">搜尋情緒</span>
+          <input id="search" type="search" placeholder="搜尋情緒，例如：焦慮" autocomplete="off">
+        </label>
+        <label>
+          <span class="sr-only">選擇分類</span>
+          <select id="group-filter"></select>
+        </label>
+        <button id="reset" class="quiet-button" type="button">重設</button>
+        <span id="result-count" class="result-count" aria-live="polite"></span>
+      </div>
+
+      <div class="map-layout">
+        <div class="chart-shell">
+          <svg id="emotion-chart" viewBox="0 0 820 760" role="img" aria-labelledby="chart-title chart-desc">
+            <title id="chart-title">72 種情緒的愉快度與能量象限</title>
+            <desc id="chart-desc">橫軸由不愉快到愉快，縱軸由低能量到高能量。可選取情緒查看分類與位置。</desc>
+          </svg>
+          <div class="axis-note axis-top">高能量</div>
+          <div class="axis-note axis-bottom">低能量</div>
+          <div class="axis-note axis-left">不愉快</div>
+          <div class="axis-note axis-right">愉快</div>
+        </div>
+
+        <aside id="emotion-detail" class="detail-panel" aria-live="polite">
+          <span class="detail-kicker">SELECT AN EMOTION</span>
+          <h3>選一個情緒</h3>
+          <p>點選象限中的圓點，查看它所屬的分類、愉快程度與能量狀態。</p>
+          <div class="detail-scale" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="guide" class="guide-section" aria-labelledby="guide-heading">
+      <div class="section-heading light">
+        <div>
+          <span class="section-index">02</span>
+          <h2 id="guide-heading">如何閱讀</h2>
+        </div>
+        <p>先感覺身體的能量，再辨認感受是靠近愉快還是不愉快。</p>
+      </div>
+      <div class="guide-grid">
+        <article><span>↗</span><h3>高能量 × 愉快</h3><p>身體充滿動力，想靠近、表達或立即行動，例如興奮、狂喜與勝利。</p></article>
+        <article><span>↖</span><h3>高能量 × 不愉快</h3><p>警報與保護系統被啟動，例如恐怖、憤怒、焦慮與不知所措。</p></article>
+        <article><span>↘</span><h3>低能量 × 愉快</h3><p>安全感增加，身心逐漸鬆開，例如平靜、安心、滿足與釋然。</p></article>
+        <article><span>↙</span><h3>低能量 × 不愉快</h3><p>能量下降、想退縮或需要支持，例如哀傷、空虛、絕望與孤單。</p></article>
+      </div>
+    </section>
+
+    <section id="groups" class="groups-section" aria-labelledby="groups-heading">
+      <div class="section-heading">
+        <div>
+          <span class="section-index">03</span>
+          <h2 id="groups-heading">12 組分類</h2>
+        </div>
+        <p>分類是整理工具；同一個情緒可能同時與多種需要有關。</p>
+      </div>
+      <div id="group-cards" class="group-grid"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>情緒不是命令，也不是對錯；它是身體與心正在提供的資訊。</p>
+    <a href="#top">回到頂端 ↑</a>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
