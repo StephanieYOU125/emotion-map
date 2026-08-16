@@ -36,6 +36,8 @@ const reset = document.querySelector("#reset");
 const resultCount = document.querySelector("#result-count");
 const detail = document.querySelector("#emotion-detail");
 const groupCards = document.querySelector("#group-cards");
+const emotionCard = document.querySelector("#emotion-card");
+const clearCard = document.querySelector("#clear-card");
 const NS = "http://www.w3.org/2000/svg";
 const plot = { left: 72, top: 58, right: 770, bottom: 700 };
 
@@ -126,6 +128,7 @@ function selectEmotion(emotion, dot) {
 search.addEventListener("input", render);
 groupFilter.addEventListener("change", render);
 reset.addEventListener("click", () => { search.value=""; groupFilter.value="all"; render(); search.focus(); });
+clearCard.addEventListener("click", () => emotionCard.reset());
 
 drawFrame();
 populateControls();
