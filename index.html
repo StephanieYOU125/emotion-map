@@ -5,7 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="以愉快度與身體能量整理 72 種情緒的互動象限圖。">
   <meta name="theme-color" content="#f8f4ec">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="情緒地圖">
   <title>情緒地圖 Emotion Map</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/app-icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
@@ -28,6 +34,7 @@
       <a href="#groups">12 組分類</a>
       <a href="#characters">角色圖鑑</a>
     </nav>
+    <button id="install-app" class="install-button" type="button" hidden>安裝 App</button>
   </header>
 
   <main id="top">
@@ -152,7 +159,8 @@
         <div class="worksheet-intro">
           <span>3 MINUTES</span>
           <h3>我的情緒操作卡</h3>
-          <p>不用一次想得很完整。把注意力放在「此刻發生什麼」與「下一步能做什麼」。內容只留在這個頁面，不會傳送或儲存。</p>
+          <p>不用一次想得很完整。把注意力放在「此刻發生什麼」與「下一步能做什麼」。內容只保存在這台裝置，不會傳送到伺服器。</p>
+          <p id="draft-status" class="draft-status" aria-live="polite">尚未填寫</p>
         </div>
         <form id="emotion-card" autocomplete="off">
           <label><span>客觀上發生了什麼？</span><textarea name="event" rows="2" placeholder="只描述看得到、聽得到的事實"></textarea></label>
@@ -295,6 +303,19 @@
       <button id="close-character-dialog" type="button" aria-label="關閉放大圖片">關閉 ×</button>
     </div>
     <img id="dialog-character-image" src="" alt="">
+  </dialog>
+
+  <dialog id="install-dialog" class="install-dialog" aria-labelledby="install-dialog-title">
+    <button id="close-install-dialog" class="dialog-close" type="button" aria-label="關閉安裝說明">×</button>
+    <span class="install-mark" aria-hidden="true">●</span>
+    <h2 id="install-dialog-title">把情緒地圖放到主畫面</h2>
+    <div id="install-instructions" class="install-instructions">
+      <p><strong>iPhone／iPad</strong></p>
+      <ol><li>使用 Safari 開啟網站。</li><li>點選瀏覽器的「分享」按鈕。</li><li>選擇「加入主畫面」，再按「新增」。</li></ol>
+      <p><strong>Android／電腦</strong></p>
+      <p>使用 Chrome 或 Edge 開啟網站，從選單選擇「安裝應用程式」。</p>
+    </div>
+    <p class="install-privacy">安裝後可離線閱讀；操作卡只保存在目前裝置。</p>
   </dialog>
 
   <footer>
