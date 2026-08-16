@@ -23,6 +23,7 @@
     </a>
     <nav aria-label="頁面導覽">
       <a href="#map">象限圖</a>
+      <a href="#characters">角色圖鑑</a>
       <a href="#guide">如何閱讀</a>
       <a href="#practice">情緒轉化</a>
       <a href="#groups">12 組分類</a>
@@ -91,10 +92,54 @@
       </div>
     </section>
 
+    <section id="characters" class="characters-section" aria-labelledby="characters-heading">
+      <div class="section-heading">
+        <div>
+          <span class="section-index">02</span>
+          <h2 id="characters-heading">情緒角色圖鑑</h2>
+        </div>
+        <p>每個角色都帶著一種訊息：理解情緒為什麼出現，再練習用一句話陪伴自己。點擊圖片可以放大閱讀。</p>
+      </div>
+
+      <div class="character-gallery">
+        <article class="character-sheet">
+          <button class="character-art" type="button" data-full="assets/emotion-characters-01.svg" data-title="核心情緒角色：高興、生氣、難過、害怕、羞愧、驚訝">
+            <img src="assets/emotion-characters-01.svg" alt="高興、生氣、難過、害怕、羞愧與驚訝的立體情緒角色、自我理解及安撫語" loading="lazy">
+            <span>點擊放大</span>
+          </button>
+          <div class="character-caption"><small>CHARACTERS 01</small><h3>核心情緒</h3><p>高興・生氣・難過・害怕・羞愧・驚訝</p></div>
+        </article>
+
+        <article class="character-sheet">
+          <button class="character-art" type="button" data-full="assets/emotion-characters-02.svg" data-title="壓力與關係角色：急躁、焦慮、委屈、挫折、嫉妒、孤單">
+            <img src="assets/emotion-characters-02.svg" alt="急躁、焦慮、委屈、挫折、嫉妒與孤單的立體情緒角色、自我理解及安撫語" loading="lazy">
+            <span>點擊放大</span>
+          </button>
+          <div class="character-caption"><small>CHARACTERS 02</small><h3>壓力與關係</h3><p>急躁・焦慮・委屈・挫折・嫉妒・孤單</p></div>
+        </article>
+
+        <article class="character-sheet">
+          <button class="character-art" type="button" data-full="assets/emotion-characters-03.svg" data-title="欣賞與社交角色：欽佩、崇拜、欣賞、娛樂、敬畏、尷尬">
+            <img src="assets/emotion-characters-03.svg" alt="欽佩、崇拜、欣賞、娛樂、敬畏與尷尬的立體情緒角色、自我理解及安撫語" loading="lazy">
+            <span>點擊放大</span>
+          </button>
+          <div class="character-caption"><small>CHARACTERS 03</small><h3>欣賞與社交</h3><p>欽佩・崇拜・欣賞・娛樂・敬畏・尷尬</p></div>
+        </article>
+
+        <article class="character-sheet">
+          <button class="character-art" type="button" data-full="assets/emotion-characters-04.svg" data-title="內在需要角色：無聊、冷靜、困惑、渴望、厭惡、同情">
+            <img src="assets/emotion-characters-04.svg" alt="無聊、冷靜、困惑、渴望、厭惡與同情的立體情緒角色、自我理解及安撫語" loading="lazy">
+            <span>點擊放大</span>
+          </button>
+          <div class="character-caption"><small>CHARACTERS 04</small><h3>內在需要</h3><p>無聊・冷靜・困惑・渴望・厭惡・同情</p></div>
+        </article>
+      </div>
+    </section>
+
     <section id="guide" class="guide-section" aria-labelledby="guide-heading">
       <div class="section-heading light">
         <div>
-          <span class="section-index">02</span>
+          <span class="section-index">03</span>
           <h2 id="guide-heading">如何閱讀</h2>
         </div>
         <p>先感覺身體的能量，再辨認感受是靠近愉快還是不愉快。</p>
@@ -110,7 +155,7 @@
     <section id="practice" class="practice-section" aria-labelledby="practice-heading">
       <div class="section-heading">
         <div>
-          <span class="section-index">03</span>
+          <span class="section-index">04</span>
           <h2 id="practice-heading">從感受到行動</h2>
         </div>
         <p>情緒是資訊，不是命令。先陪伴情緒，再把能量引導到符合長期價值的行動。</p>
@@ -170,7 +215,7 @@
     <section id="groups" class="groups-section" aria-labelledby="groups-heading">
       <div class="section-heading">
         <div>
-          <span class="section-index">04</span>
+          <span class="section-index">05</span>
           <h2 id="groups-heading">12 組分類</h2>
         </div>
         <p>分類是整理工具；同一個情緒可能同時與多種需要有關。</p>
@@ -178,6 +223,14 @@
       <div id="group-cards" class="group-grid"></div>
     </section>
   </main>
+
+  <dialog id="character-dialog" class="character-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-toolbar">
+      <p id="dialog-title"></p>
+      <button id="close-character-dialog" type="button" aria-label="關閉放大圖片">關閉 ×</button>
+    </div>
+    <img id="dialog-character-image" src="" alt="">
+  </dialog>
 
   <footer>
     <p>情緒不是命令，也不是對錯；它是身體與心正在提供的資訊。</p>
